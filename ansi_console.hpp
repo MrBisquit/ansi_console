@@ -70,21 +70,21 @@ namespace Console {
     };
 
     enum ScreenMode {
-        CONSOLE_MODE_40x25_MONOCHROME      = 0,
-        CONSOLE_MODE_40x25_COLOR           = 1,
-        CONSOLE_MODE_80x25_MONOCHROME      = 2,
-        CONSOLE_MODE_80x25_COLOR           = 3,
-        CONSOLE_MODE_320x200_4_COLOR       = 4,
-        CONSOLE_MODE_320x200_MONOCHROME    = 5,
-        CONSOLE_MODE_640x200_MONOCHROME    = 6,
-        CONSOLE_MODE_LINE_WRAPPING         = 7,  // I have no idea why this is in the middle of here and not at one end
-        CONSOLE_MODE_320x200_COLOR         = 13,
-        CONSOLE_MODE_640x200_16_COLOR      = 14,
-        CONSOLE_MODE_640x350_MONOCHROME    = 15,
-        CONSOLE_MODE_640x350_16_COLOR      = 16,
-        CONSOLE_MODE_640x480_MONOCHROME    = 17,
-        CONSOLE_MODE_640x480_16_COLOR      = 18,
-        CONSOLE_MODE_320x200_256_COLOR     = 19
+        _40x25_MONOCHROME      = 0,
+        _40x25_COLOR           = 1,
+        _80x25_MONOCHROME      = 2,
+        _80x25_COLOR           = 3,
+        _320x200_4_COLOR       = 4,
+        _320x200_MONOCHROME    = 5,
+        _640x200_MONOCHROME    = 6,
+        _LINE_WRAPPING         = 7,  // I have no idea why this is in the middle of here and not at one end
+        _320x200_COLOR         = 13,
+        _640x200_16_COLOR      = 14,
+        _640x350_MONOCHROME    = 15,
+        _640x350_16_COLOR      = 16,
+        _640x480_MONOCHROME    = 17,
+        _640x480_16_COLOR      = 18,
+        _320x200_256_COLOR     = 19
     };
 
     /// @brief Sets the foreground color

@@ -91,3 +91,88 @@ These are a few common private modes that this library supports, these are imple
 
 ### C++ version
 The C++ version of this is very similar to the C version, the difference is that it's structured. Copy the `ansi_console.hpp` file to your project, and import it.
+
+All of the library functionality for the C++ version is within the namespace `Console`, you may wish to
+import by using `using namespace Console`.
+
+#### Colours
+This is an `enum`, with the values:
+
+| Colour  | `enum` value     |
+| :------ | :--------------- |
+| Black   | `Color::Black`   |
+| Red     | `Color::Red`     |
+| Green   | `Color::Green`   |
+| Yellow  | `Color::Yellow`  |
+| Blue    | `Color::Blue`    |
+| Magenta | `Color::Magenta` |
+| White   | `Color::White`   |
+
+And their bright values begin with `Bright_`, for example: `Color::Bright_Black`.
+
+To use these, use `set_foreground_color(color)` and `set_background_color(color)`.
+To reset the colour, use `reset_colour`.
+
+Depending on the console mode, `set_foreground_rgb(r, g, b)` and `set_background_rgb(r, g, b)` may be available.
+This library supports **Truecolor**, which you can [read more about](https://en.wikipedia.org/wiki/Color_depth#True_color_.2824-bit.29).
+
+#### Cursor
+You can move the cursor around by using the following:
+- `reset_cursor`: Resets the cursor to (0,0)
+- `move_cursor(line, column)`: Moves the cursor to the line and column
+
+#### Screen clearing
+You can clear the screen in two ways:
+- `clear_screen`: Clears the whole screen
+- `clear_line`: Clears the current line
+  - You may wish to use `\r` after using this, to move the cursor to the beginning of the line
+
+#### Graphics modes
+| Graphics mode    | Mode                          |
+| :--------------- | :---------------------------- |
+| Reset            | `GraphicsMode::Reset`         |
+| Bold             | `GraphicsMode::Bold`          |
+| Dim/Faint        | `GraphicsMode::Dim`           |
+| Italic           | `GraphicsMode::Italic`        |
+| Underline        | `GraphicsMode::Underline`     |
+| Blinking         | `GraphicsMode::Blinking`      |
+| Inverse/Reverse  | `GraphicsMode::Reverse`       |
+| Hidden/Invisible | `GraphicsMode::Invisible`     |
+| Stikethrough     | `GraphicsMode::Strikethrough` |
+
+To use these, use `graphics_set(mode)`, use `GraphicsMode::Reset` to reset the graphics mode.
+
+#### Screen modes
+| Screen mode                | Definition                        |
+| :------------------------- | :-------------------------------- |
+| 40x25 Monochrome (2‑color) | `ScreenMode::_40x25_MONOCHROME`   |
+| 40x25 Color                | `ScreenMode::_40x25_COLOR`        |
+| 80x25 Monochrome (2‑color) | `ScreenMode::_80x25_MONOCHROME`   |
+| 80x25 Color                | `ScreenMode::_80x25_COLOR`        |
+| 320x200 4‑color            | `ScreenMode::_320x200_4_COLOR`    |
+| 320x200 Monochrome         | `ScreenMode::_320x200_MONOCHROME` |
+| 640x200 Monochrome         | `ScreenMode::_640x200_MONOCHROME` |
+| Line Wrapping              | `ScreenMode::_LINE_WRAPPING`      |
+| 320x200 Color              | `ScreenMode::_320x200_COLOR`      |
+| 640x200 16‑color           | `ScreenMode::_640x200_16_COLOR`   |
+| 640x350 Monochrome         | `ScreenMode::_640x350_MONOCHROME` |
+| 640x350 16‑color           | `ScreenMode::_640x350_16_COLOR`   |
+| 640x480 Monochrome         | `ScreenMode::_640x480_MONOCHROME` |
+| 640x480 16‑color           | `ScreenMode::_640x480_16_COLOR`   |
+| 320x200 256‑color          | `ScreenMode::_320x200_256_COLOR`  |
+
+To use these, use `mode_set(mode)`, and `console_mode_reset` to reset it to the default.
+
+#### Common private modes
+These are a few common private modes that this library supports, these are implemented in most terminals **but not all**.
+
+These are all in another namespace, `Console::Private`, which you can also include via `using namespace Private`.
+
+| Mode                                | Description                  |
+| :---------------------------------- | :--------------------------- |
+| `Private::cursor_invisible`         | Make the cursor invisible    |
+| `Private::cursor_visible`           | Make the cursor visible      |
+| `Private::screen_restore`           | Restore the screen           |
+| `Private::screen_save`              | Save the screen              |
+| `Private::alternate_buffer_enable`  | Enable the alternate buffer  |
+| `Private::alternate_buffer_disable` | Disable the alternate buffer |
