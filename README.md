@@ -90,3 +90,4 @@ These are a few common private modes that this library supports, these are imple
 | `console_private_alternate_buffer_disable` | Disable the alternate buffer |
 
 ### C++ version
+The C++ version of this is very similar to the C version, the difference is that it's structured. Copy the `ansi_console.hpp` file to your project, and import it.

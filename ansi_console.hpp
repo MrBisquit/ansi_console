@@ -38,7 +38,7 @@
 */
 
 namespace Console {
-    enum Colors {
+    enum Color {
         Black           = 30,
         Red             = 31,
         Green           = 32,
@@ -48,14 +48,141 @@ namespace Console {
         Cyan            = 36,
         White           = 37,
 
-        Bright_Black,
-        Bright_Green,
-        Bright_Yellow,
-        Bright_Blue,
-        Bright_Magenta,
-        Bright_Cyan,
-        Bright_White
+        Bright_Black    = 90,
+        Bright_Green    = 91,
+        Bright_Yellow   = 92,
+        Bright_Blue     = 93,
+        Bright_Magenta  = 94,
+        Bright_Cyan     = 95,
+        Bright_White    = 96
     };
+
+    enum GraphicsMode {
+        Reset           = 0,
+        Bold            = 1,
+        Dim             = 2,
+        Italic          = 3,
+        Underline       = 4,
+        Blinking        = 5,
+        Reverse         = 7,
+        Invisible       = 8,
+        Strikethrough   = 9
+    };
+
+    enum ScreenMode {
+        CONSOLE_MODE_40x25_MONOCHROME      = 0,
+        CONSOLE_MODE_40x25_COLOR           = 1,
+        CONSOLE_MODE_80x25_MONOCHROME      = 2,
+        CONSOLE_MODE_80x25_COLOR           = 3,
+        CONSOLE_MODE_320x200_4_COLOR       = 4,
+        CONSOLE_MODE_320x200_MONOCHROME    = 5,
+        CONSOLE_MODE_640x200_MONOCHROME    = 6,
+        CONSOLE_MODE_LINE_WRAPPING         = 7,  // I have no idea why this is in the middle of here and not at one end
+        CONSOLE_MODE_320x200_COLOR         = 13,
+        CONSOLE_MODE_640x200_16_COLOR      = 14,
+        CONSOLE_MODE_640x350_MONOCHROME    = 15,
+        CONSOLE_MODE_640x350_16_COLOR      = 16,
+        CONSOLE_MODE_640x480_MONOCHROME    = 17,
+        CONSOLE_MODE_640x480_16_COLOR      = 18,
+        CONSOLE_MODE_320x200_256_COLOR     = 19
+    };
+
+    /// @brief Sets the foreground color
+    /// @param color The color
+    void set_foreground_color(Color color) {
+        printf("\x1B[%dm", (uint8_t)color);
+    }
+
+    /// @brief Sets the background color
+    /// @param color The color
+    void set_background_color(Color color) {
+        printf("\x1B[%dm", ((uint8_t)color) + 10);
+    }
+
+    /// @brief Sets the foreground color with RGB (If your terminal supports Truecolor)
+    /// @param r Red
+    /// @param g Green
+    /// @param b Blue
+    void set_foreground_rgb(uint8_t r, uint8_t g, uint8_t b) {
+        printf("\x1B[38;2;{%d};{%d};{%d}m", r, g, b);
+    }
+
+    /// @brief Sets the background color with RGB (If your terminal supports Truecolor)
+    /// @param r Red
+    /// @param g Green
+    /// @param b Blue
+    void set_background_rgb(uint8_t r, uint8_t g, uint8_t b) {
+        printf("\x1B[48;2;{%d};{%d};{%d}m", r, g, b);
+    }
+
+    /// @brief Resets console color
+    void reset_color() {
+        printf("\033[0m");
+    }
+
+    /// @brief Sets the graphics mode
+    /// @param mode The graphics mode
+    void graphics_set(GraphicsMode mode) {
+        printf("\x1B[%dm", (uint8_t)mode);
+    }
+
+    /// @brief Reset the graphics node
+    /// @param mode The graphics mode
+    void graphics_reset(GraphicsMode mode) {
+        if(mode == GraphicsMode::Dim) {
+            printf("\x1B[22m");
+            return;
+        }
+
+        printf("\x1B[%dm", ((uint8_t)mode) + 21);
+    }
+
+    void mode_set(ScreenMode mode) {
+        printf("\x1B[=%dh", (uint8_t)mode);
+    }
+
+    void mode_reset(ScreenMode mode) {
+        printf("\x1B[=%dl", (uint8_t)mode);
+    }
+
+    /// @brief Console private modes
+    namespace Private {
+        /// @brief Sets the cursor to be invisible
+        /// @note These are implemented in most terminals, but not all
+        void cursor_invisible() {
+            printf("\x1B[?25l");
+        }
+
+        /// @brief Sets the cursor to be visible
+        /// @note These are implemented in most terminals, but not all
+        void cursor_visible() {
+            printf("\x1B[?25h");
+        }
+
+        /// @brief Restores the screen
+        /// @note These are implemented in most terminals, but not all
+        void screen_restore() {
+            printf("\x1B[?47l");
+        }
+
+        /// @brief Saves the screen
+        /// @note These are implemented in most terminals, but not all
+        void screen_save() {
+            printf("\x1B[?47h");
+        }
+
+        /// @brief Enables the alternate buffer
+        /// @note These are implemented in most terminals, but not all
+        void alternate_buffer_enable() {
+            printf("\x1B[?1049l");
+        }
+
+        /// @brief Disables the alternate buffer
+        /// @note These are implemented in most terminals, but not all
+        void alternate_buffer_disable() {
+            printf("\x1B[?1049h");
+        }
+    }
 }
 
 #endif // CONSOLE_H
