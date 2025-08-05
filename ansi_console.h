@@ -147,7 +147,7 @@ void console_reset_cursor() {
 /// @param column The column to move the console cursor to
 void console_move_cursor(int line, int column) {
     printf("\x1B[%d;%dH", line, column);
-	printf("\x1B[%d;%df", line, column);
+    printf("\x1B[%d;%df", line, column);
 }
 
 /// @brief Clears the screen
