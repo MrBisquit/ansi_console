@@ -1,6 +1,16 @@
 # ANSI Console
 A header-only library for using ANSI console escape codes, it is currently only available as a C header file, but I plan on making a C++ version soon.
 
+<img src="https://badgen.net/github/license/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/watchers/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/stars/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/forks/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/contributors/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/issues/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/commits/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/last-commit/MrBisquit/ansi_console" />
+<img src="https://badgen.net/github/dependabot/MrBisquit/ansi_console" />
+
 ## Usage
 
 > [!NOTE]
