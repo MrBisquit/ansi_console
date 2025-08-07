@@ -2,7 +2,11 @@
 A header-only library for using ANSI console escape codes, it is currently only available as a C header file, but I plan on making a C++ version soon.
 
 ## Usage
-### Examples
+
+> [!NOTE]
+> When using a stream (`FILE*`), you must put `f` on the beginning of the function name,
+> and prepend the file stream in the arguments.
+> For example, instead of `console_set_color(color)`, use `fconsole_set_color(stream, color)`.
 
 ### C version
 Copy the `ansi_console.h` file to your project, and import it.
