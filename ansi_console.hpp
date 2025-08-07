@@ -49,12 +49,13 @@ namespace Console {
         White           = 37,
 
         Bright_Black    = 90,
-        Bright_Green    = 91,
-        Bright_Yellow   = 92,
-        Bright_Blue     = 93,
-        Bright_Magenta  = 94,
-        Bright_Cyan     = 95,
-        Bright_White    = 96
+        Bright_Red      = 91,
+        Bright_Green    = 92,
+        Bright_Yellow   = 93,
+        Bright_Blue     = 94,
+        Bright_Magenta  = 95,
+        Bright_Cyan     = 96,
+        Bright_White    = 97
     };
 
     enum GraphicsMode {
