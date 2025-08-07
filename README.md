@@ -11,6 +11,8 @@ A header-only library for using ANSI console escape codes, it is currently only 
 ![License](https://badgen.net/github/last-commit/MrBisquit/ansi_console)
 ![License](https://badgen.net/github/dependabot/MrBisquit/ansi_console)
 
+![Colours](media/colours.png)
+
 ## Usage
 
 > [!NOTE]
