@@ -13,6 +13,9 @@ A header-only library for using ANSI console escape codes, it is currently only 
 
 ![Colours](media/colours.png)
 
+There are now 2 variants, a standard variant, and an extended variant.
+The standard variants don't include the private modes, where the extended variants do.
+
 ## Usage
 
 > [!NOTE]

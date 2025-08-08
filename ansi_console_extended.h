@@ -1,4 +1,4 @@
-/** ansi_console.h made by William Dawson (MrBisquit on GitHub)
+/** ansi_console_extended.h made by William Dawson (MrBisquit on GitHub)
  *  GitHub:     https://github.com/MrBisquit/ansi_console
  *  File:       https://github.com/MrBisquit/ansi_console/tree/main/ansi_console.h
  *  License:    SPDX-License-Identifier: MIT
@@ -244,5 +244,114 @@ void fconsole_graphics_set(FILE* stream, uint8_t graphics) {
 
 #pragma endregion
 #pragma region // Mode
+/// @brief Sets the console screen mode
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void console_mode_set(uint8_t mode) {
+    printf("\x1B[=%dh", mode);
+}
+
+/// @brief Sets the console screen mode
+/// @param stream The stream to write the ANSI escape code to
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void fconsole_mode_set(FILE* stream, uint8_t mode) {
+    fprintf(stream, "\x1B[=%dh", mode);
+}
+
+/// @brief Resets the console screen mode by using the same values as setting does
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void console_mode_reset(uint8_t mode) {
+    printf("\x1B[=%dl", mode);
+}
+
+/// @brief Resets the console screen mode by using the same values as setting does
+/// @param stream The stream to write the ANSI escape code to
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void fconsole_mode_reset(FILE* stream, uint8_t mode) {
+    fprintf(stream, "\x1B[=%dl", mode);
+}
+
+#pragma endregion
+#pragma region // Private
+// Console private modes
+/// @brief Sets the cursor to be invisible
+/// @note These are implemented in most terminals, but not all
+void console_private_cursor_invisible() {
+    printf("\x1B[?25l");
+}
+
+// Console private modes
+/// @brief Sets the cursor to be invisible
+/// @note These are implemented in most terminals, but not all
+/// @param stream The stream to write the ANSI escape code to
+void fconsole_private_cursor_invisible(FILE* stream) {
+    fprintf(stream, "\x1B[?25l");
+}
+
+/// @brief Sets the cursor to be visible
+/// @note These are implemented in most terminals, but not all
+void console_private_cursor_visible() {
+    printf("\x1B[?25h");
+}
+
+/// @brief Sets the cursor to be visible
+/// @note These are implemented in most terminals, but not all
+/// @param stream The stream to write the ANSI escape code to
+void fconsole_private_cursor_visible(FILE* stream) {
+    fprintf(stream, "\x1B[?25h");
+}
+
+/// @brief Restores the screen
+/// @note These are implemented in most terminals, but not all
+void console_private_screen_restore() {
+    printf("\x1B[?47l");
+}
+
+/// @brief Restores the screen
+/// @note These are implemented in most terminals, but not all
+/// @param stream The stream to write the ANSI escape code to
+void fconsole_private_screen_restore(FILE* stream) {
+    fprintf(stream, "\x1B[?47l");
+}
+
+/// @brief Saves the screen
+/// @note These are implemented in most terminals, but not all
+void console_private_screen_save() {
+    printf("\x1B[?47h");
+}
+
+/// @brief Saves the screen
+/// @note These are implemented in most terminals, but not all
+/// @param stream The stream to write the ANSI escape code to
+void fconsole_private_screen_save(FILE* stream) {
+    fprintf(stream, "\x1B[?47h");
+}
+
+/// @brief Enables the alternate buffer
+/// @note These are implemented in most terminals, but not all
+void console_private_alternate_buffer_enable() {
+    printf("\x1B[?1049l");
+}
+
+/// @brief Enables the alternate buffer
+/// @note These are implemented in most terminals, but not all
+/// @param stream The stream to write the ANSI escape code to
+void fconsole_private_alternate_buffer_enable(FILE* stream) {
+    fprintf(stream, "\x1B[?1049l");
+}
+
+/// @brief Disables the alternate buffer
+/// @note These are implemented in most terminals, but not all
+void console_private_alternate_buffer_disable() {
+    printf("\x1B[?1049h");
+}
+
+/// @brief Disables the alternate buffer
+/// @note These are implemented in most terminals, but not all
+/// @param stream The stream to write the ANSI escape code to
+void fconsole_private_alternate_buffer_disable(FILE* stream) {
+    fprintf(stream, "\x1B[?1049h");
+}
+
+#pragma endregion
 
 #endif // CONSOLE_H
