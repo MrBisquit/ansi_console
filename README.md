@@ -195,3 +195,65 @@ These are all in another namespace, `Console::Private`, which you can also inclu
 | `Private::screen_save`              | Save the screen              |
 | `Private::alternate_buffer_enable`  | Enable the alternate buffer  |
 | `Private::alternate_buffer_disable` | Disable the alternate buffer |
+
+### C version (small version)
+Copy the `ansi_console_small.h` file to your project, and import it.
+
+This version only comes with inline definitions, designed to only be used in existing strings.
+
+#### Colours
+The definitions are the same as the C version.
+
+To set the colour, use `CONSOLE_COLOR(color)`, for example:
+```c
+printf("Hello " CONSOLE_COLOR(CONSOLE_FG_YELLOW) "World!");
+```
+
+To reset the colour, use `CONSOLE_RESET`, for example:
+```c
+printf("Hello " CONSOLE_COLOR(CONSOLE_FG_YELLOW) "World!" CONSOLE_COLOR_RESET);
+```
+
+To set the foreground colour in RGB, use `CONSOLE_COLOR_RGB_FG(r, g, b)`, and
+`CONSOLE_COLOR_RGB_BG(r, g, b)` for the background RGB colour.
+
+#### Cursor
+Use `CONSOLE_CURSOR_RESET` to reset the cursor to (0,0), for example:
+```c
+printf(CONSOLE_CURSOR_RESET "Hello, World!");
+```
+
+To move the cursor to a specific place, use `CONSOLE_CURSOR_MOVE(line, column)`,
+for example:
+```c
+printf(CONSOLE_CURSOR_MOVE(1, 0) "Hello World!");
+```
+
+#### Screen clearing
+To clear the entire screen, use `CONSOLE_SCREEN_CLEAR`, for example:
+```c
+printf(CONSOLE_SCREEN_CLEAR CONSOLE_CURSOR_RESET "Hello World!");
+```
+
+Use `CONSOLE_SCREEN_CLEAR_LINE` to clear the current line, for example:
+```c
+printf(CONSOLE_SCREEN_CLEAR_LINE "\rHello World");
+```
+
+#### Graphics moded
+The definitions are the same as the C version.
+
+Use `CONSOLE_GRAPHICS_SET(graphics)`, and add `RESET` after `GRAPHICS` in the
+graphics mode to reset it. For example:
+```c
+printf(CONSOLE_GRAPHICS_SET(CONSOLE_GRAPHICS_BOLD) "Some bold text" CONSOLE_GRAPHICS_SET(CONSOLE_GRAPHICS_RESET_BOLD));
+```
+
+#### Screen modes
+The definitions are the same as the C version.
+
+Use `CONSOLE_MODE_SET(mode)` to set the screen mode, and then `CONSOLE_MODE_RESET(mode)`
+to reset the mode. For example:
+```c
+printf(CONSOLE_MODE_SET(CONSOLE_MODE_320x200_256_COLOR) "320x200 with 256 colours!" CONSOLE_MODE_RESET(CONSOLE_MODE_320x200_256_COLOR));
+```

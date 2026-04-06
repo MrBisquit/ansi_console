@@ -112,7 +112,22 @@
 #define CONSOLE_MODE_320x200_256_COLOR          (uint8_t)19
 
 #pragma endregion
+
+#define CONSOLE_COLOR(color)        "\x1B[" color "%dm"
+#define CONSOLE_COLOR_RESET         "\033[0m"
+#define CONSOLE_COLOR_RGB_FG(r,g,b) "\x1B[38;2;" r ";" g ";" b "m"
+#define CONSOLE_COLOR_RGB_BG(r,g,b) "\x1B[48;2;" r ";" g ";" b "m"
+
+#define CONSOLE_CURSOR_RESET        "\x1B[H"
+#define CONSOLE_CURSOR_MOVE(l,c)    "\x1B[" l ";" c "H\x1B[" l ";" c "f"
+
+#define CONSOLE_SCREEN_CLEAR        "\x1B[2J"
+#define CONSOLE_SCREEN_CLEAR_LINE   "\x1B[2K"
+
+#define CONSOLE_GRAPHICS_SET(g)     "\x1B[" g "m"
+
 #pragma region // Colors
+
 /// @brief This can set both the foreground and background color
 /// @param color The color (definitions beginning with `CONSOLE_FG` or `CONSOLE_BG`)
 void console_set_color(uint8_t color) {
@@ -244,5 +259,32 @@ void fconsole_graphics_set(FILE* stream, uint8_t graphics) {
 
 #pragma endregion
 #pragma region // Mode
+/// @brief Sets the console screen mode
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void console_mode_set(uint8_t mode) {
+    printf("\x1B[=%dh", mode);
+}
+
+/// @brief Sets the console screen mode
+/// @param stream The stream to write the ANSI escape code to
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void fconsole_mode_set(FILE* stream, uint8_t mode) {
+    fprintf(stream, "\x1B[=%dh", mode);
+}
+
+/// @brief Resets the console screen mode by using the same values as setting does
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void console_mode_reset(uint8_t mode) {
+    printf("\x1B[=%dl", mode);
+}
+
+/// @brief Resets the console screen mode by using the same values as setting does
+/// @param stream The stream to write the ANSI escape code to
+/// @param mode The console screen mode (definitions beginning with `CONSOLE_MODE`)
+void fconsole_mode_reset(FILE* stream, uint8_t mode) {
+    fprintf(stream, "\x1B[=%dl", mode);
+}
+
+#pragma endregion
 
 #endif // CONSOLE_H
