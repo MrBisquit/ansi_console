@@ -6,8 +6,6 @@
  */
 
 #pragma once
-#include <stdio.h>
-#include <stdint.h>
 
 #ifndef CONSOLE_H
 
@@ -40,95 +38,95 @@
 #pragma region // Definitions
 // Color definitions
 // Foreground
-#define CONSOLE_FG_BLACK                (uint8_t)30
-#define CONSOLE_FG_RED                  (uint8_t)31
-#define CONSOLE_FG_GREEN                (uint8_t)32
-#define CONSOLE_FG_YELLOW               (uint8_t)33
-#define CONSOLE_FG_BLUE                 (uint8_t)34
-#define CONSOLE_FG_MAGENTA              (uint8_t)35
-#define CONSOLE_FG_CYAN                 (uint8_t)36
-#define CONSOLE_FG_WHITE                (uint8_t)37
-#define CONSOLE_FG_BRIGHT_BLACK         (uint8_t)90
-#define CONSOLE_FG_BRIGHT_RED           (uint8_t)91
-#define CONSOLE_FG_BRIGHT_GREEN         (uint8_t)92
-#define CONSOLE_FG_BRIGHT_YELLOW        (uint8_t)93
-#define CONSOLE_FG_BRIGHT_BLUE          (uint8_t)94
-#define CONSOLE_FG_BRIGHT_MAGENTA       (uint8_t)95
-#define CONSOLE_FG_BRIGHT_CYAN          (uint8_t)96
-#define CONSOLE_FG_BRIGHT_WHITE         (uint8_t)97
+#define CONSOLE_FG_BLACK                30
+#define CONSOLE_FG_RED                  31
+#define CONSOLE_FG_GREEN                32
+#define CONSOLE_FG_YELLOW               33
+#define CONSOLE_FG_BLUE                 34
+#define CONSOLE_FG_MAGENTA              35
+#define CONSOLE_FG_CYAN                 36
+#define CONSOLE_FG_WHITE                37
+#define CONSOLE_FG_BRIGHT_BLACK         90
+#define CONSOLE_FG_BRIGHT_RED           91
+#define CONSOLE_FG_BRIGHT_GREEN         92
+#define CONSOLE_FG_BRIGHT_YELLOW        93
+#define CONSOLE_FG_BRIGHT_BLUE          94
+#define CONSOLE_FG_BRIGHT_MAGENTA       95
+#define CONSOLE_FG_BRIGHT_CYAN          96
+#define CONSOLE_FG_BRIGHT_WHITE         97
 // Background
-#define CONSOLE_BG_BLACK                (uint8_t)40
-#define CONSOLE_BG_RED                  (uint8_t)41
-#define CONSOLE_BG_GREEN                (uint8_t)42
-#define CONSOLE_BG_YELLOW               (uint8_t)43
-#define CONSOLE_BG_BLUE                 (uint8_t)44
-#define CONSOLE_BG_MAGENTA              (uint8_t)45
-#define CONSOLE_BG_CYAN                 (uint8_t)46
-#define CONSOLE_BG_WHITE                (uint8_t)47
-#define CONSOLE_BG_BRIGHT_BLACK         (uint8_t)100
-#define CONSOLE_BG_BRIGHT_RED           (uint8_t)101
-#define CONSOLE_BG_BRIGHT_GREEN         (uint8_t)102
-#define CONSOLE_BG_BRIGHT_YELLOW        (uint8_t)103
-#define CONSOLE_BG_BRIGHT_BLUE          (uint8_t)104
-#define CONSOLE_BG_BRIGHT_MAGENTA       (uint8_t)105
-#define CONSOLE_BG_BRIGHT_CYAN          (uint8_t)106
-#define CONSOLE_BG_BRIGHT_WHITE         (uint8_t)107
+#define CONSOLE_BG_BLACK                40
+#define CONSOLE_BG_RED                  41
+#define CONSOLE_BG_GREEN                42
+#define CONSOLE_BG_YELLOW               43
+#define CONSOLE_BG_BLUE                 44
+#define CONSOLE_BG_MAGENTA              45
+#define CONSOLE_BG_CYAN                 46
+#define CONSOLE_BG_WHITE                47
+#define CONSOLE_BG_BRIGHT_BLACK         100
+#define CONSOLE_BG_BRIGHT_RED           101
+#define CONSOLE_BG_BRIGHT_GREEN         102
+#define CONSOLE_BG_BRIGHT_YELLOW        103
+#define CONSOLE_BG_BRIGHT_BLUE          104
+#define CONSOLE_BG_BRIGHT_MAGENTA       105
+#define CONSOLE_BG_BRIGHT_CYAN          106
+#define CONSOLE_BG_BRIGHT_WHITE         107
 
 // Colors/Graphics mode
-#define CONSOLE_GRAPHICS_RESET                  (uint8_t)0
-#define CONSOLE_GRAPHICS_BOLD                   (uint8_t)1
-#define CONSOLE_GRAPHICS_DIM                    (uint8_t)2
-#define CONSOLE_GRAPHICS_ITALIC                 (uint8_t)3
-#define CONSOLE_GRAPHICS_UNDERLINE              (uint8_t)4
-#define CONSOLE_GRAPHICS_BLINKING               (uint8_t)5
-#define CONSOLE_GRAPHICS_INVERSE_REVERSE        (uint8_t)7
-#define CONSOLE_GRAPHICS_HIDDEN_INVISIBLE       (uint8_t)8
-#define CONSOLE_GRAPHICS_STRIKETHROUGH          (uint8_t)9
+#define CONSOLE_GRAPHICS_RESET                  0
+#define CONSOLE_GRAPHICS_BOLD                   1
+#define CONSOLE_GRAPHICS_DIM                    2
+#define CONSOLE_GRAPHICS_ITALIC                 3
+#define CONSOLE_GRAPHICS_UNDERLINE              4
+#define CONSOLE_GRAPHICS_BLINKING               5
+#define CONSOLE_GRAPHICS_INVERSE_REVERSE        7
+#define CONSOLE_GRAPHICS_HIDDEN_INVISIBLE       8
+#define CONSOLE_GRAPHICS_STRIKETHROUGH          9
 // Reset sequences
-#define CONSOLE_GRAPHICS_RESET_BOLD             (uint8_t)22
-#define CONSOLE_GRAPHICS_RESET_DIM              (uint8_t)22
-#define CONSOLE_GRAPHICS_RESET_ITALIC           (uint8_t)23
-#define CONSOLE_GRAPHICS_RESET_UNDERLINE        (uint8_t)24
-#define CONSOLE_GRAPHICS_RESET_BLINKING         (uint8_t)25
-#define CONSOLE_GRAPHICS_RESET_INVERSE_REVERSE  (uint8_t)27
-#define CONSOLE_GRAPHICS_RESET_HIDDEN_INVISIBLE (uint8_t)28
-#define CONSOLE_GRAPHICS_RESET_STRIKETHROUGH    (uint8_t)29
+#define CONSOLE_GRAPHICS_RESET_BOLD             22
+#define CONSOLE_GRAPHICS_RESET_DIM              22
+#define CONSOLE_GRAPHICS_RESET_ITALIC           23
+#define CONSOLE_GRAPHICS_RESET_UNDERLINE        24
+#define CONSOLE_GRAPHICS_RESET_BLINKING         25
+#define CONSOLE_GRAPHICS_RESET_INVERSE_REVERSE  27
+#define CONSOLE_GRAPHICS_RESET_HIDDEN_INVISIBLE 28
+#define CONSOLE_GRAPHICS_RESET_STRIKETHROUGH    29
 
 // Screen modes
-#define CONSOLE_MODE_40x25_MONOCHROME           (uint8_t)0
-#define CONSOLE_MODE_40x25_COLOR                (uint8_t)1
-#define CONSOLE_MODE_80x25_MONOCHROME           (uint8_t)2
-#define CONSOLE_MODE_80x25_COLOR                (uint8_t)3
-#define CONSOLE_MODE_320x200_4_COLOR            (uint8_t)4
-#define CONSOLE_MODE_320x200_MONOCHROME         (uint8_t)5
-#define CONSOLE_MODE_640x200_MONOCHROME         (uint8_t)6
-#define CONSOLE_MODE_LINE_WRAPPING              (uint8_t)7      // I have no idea why this is in the middle of here and not at one end
-#define CONSOLE_MODE_320x200_COLOR              (uint8_t)13
-#define CONSOLE_MODE_640x200_16_COLOR           (uint8_t)14
-#define CONSOLE_MODE_640x350_MONOCHROME         (uint8_t)15
-#define CONSOLE_MODE_640x350_16_COLOR           (uint8_t)16
-#define CONSOLE_MODE_640x480_MONOCHROME         (uint8_t)17
-#define CONSOLE_MODE_640x480_16_COLOR           (uint8_t)18
-#define CONSOLE_MODE_320x200_256_COLOR          (uint8_t)19
+#define CONSOLE_MODE_40x25_MONOCHROME           0
+#define CONSOLE_MODE_40x25_COLOR                1
+#define CONSOLE_MODE_80x25_MONOCHROME           2
+#define CONSOLE_MODE_80x25_COLOR                3
+#define CONSOLE_MODE_320x200_4_COLOR            4
+#define CONSOLE_MODE_320x200_MONOCHROME         5
+#define CONSOLE_MODE_640x200_MONOCHROME         6
+#define CONSOLE_MODE_LINE_WRAPPING              7      // I have no idea why this is in the middle of here and not at one end
+#define CONSOLE_MODE_320x200_COLOR              13
+#define CONSOLE_MODE_640x200_16_COLOR           14
+#define CONSOLE_MODE_640x350_MONOCHROME         15
+#define CONSOLE_MODE_640x350_16_COLOR           16
+#define CONSOLE_MODE_640x480_MONOCHROME         17
+#define CONSOLE_MODE_640x480_16_COLOR           18
+#define CONSOLE_MODE_320x200_256_COLOR          19
 
 #pragma endregion
 #pragma region // Colors
 
-#define CONSOLE_COLOR(color)        "\x1B[" color "%dm"
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+#define CONSOLE_COLOR(color)        "\x1B[" STR(color) "%dm"
 #define CONSOLE_COLOR_RESET         "\033[0m"
-#define CONSOLE_COLOR_RGB_FG(r,g,b) "\x1B[38;2;" r ";" g ";" b "m"
-#define CONSOLE_COLOR_RGB_BG(r,g,b) "\x1B[48;2;" r ";" g ";" b "m"
+#define CONSOLE_COLOR_RGB_FG(r,g,b) "\x1B[38;2;" STR(r) ";" STR(g) ";" STR(b) "m"
+#define CONSOLE_COLOR_RGB_BG(r,g,b) "\x1B[48;2;" STR(r) ";" STR(g) ";" STR(b) "m"
 
 #define CONSOLE_CURSOR_RESET        "\x1B[H"
-#define CONSOLE_CURSOR_MOVE(l,c)    "\x1B[" l ";" c "H\x1B[" l ";" c "f"
+#define CONSOLE_CURSOR_MOVE(l,c)    "\x1B[" STR(l) ";" STR(c) "H\x1B[" STR(l) ";" STR(c) "f"
 
 #define CONSOLE_SCREEN_CLEAR        "\x1B[2J"
 #define CONSOLE_SCREEN_CLEAR_LINE   "\x1B[2K"
 
-#define CONSOLE_GRAPHICS_SET(g)     "\x1B[" g "m"
-
-#define CONSOLE_MODE_SET(m)         "\x1B[=" m "h"
-#define CONSOLE_MODE_RESET(m)       "\x1B[=" m "l"
+#define CONSOLE_GRAPHICS_SET(g)     "\x1B[" STR(g) "m"
 
 #pragma region // Colors
 
