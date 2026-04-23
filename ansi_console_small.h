@@ -115,7 +115,7 @@
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)
 
-#define CONSOLE_COLOR(color)        "\x1B[" STR(color) "%dm"
+#define CONSOLE_COLOR(color)        "\x1B[" STR(color) "m"
 #define CONSOLE_COLOR_RESET         "\033[0m"
 #define CONSOLE_COLOR_RGB_FG(r,g,b) "\x1B[38;2;" STR(r) ";" STR(g) ";" STR(b) "m"
 #define CONSOLE_COLOR_RGB_BG(r,g,b) "\x1B[48;2;" STR(r) ";" STR(g) ";" STR(b) "m"
